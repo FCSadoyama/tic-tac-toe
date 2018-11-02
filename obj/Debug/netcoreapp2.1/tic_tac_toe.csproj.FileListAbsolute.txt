@@ -1,0 +1,11 @@
+C:\Users\Felipe Sadoyama\repos\tic_tac_toe\bin\Debug\netcoreapp2.1\tic_tac_toe.deps.json
+C:\Users\Felipe Sadoyama\repos\tic_tac_toe\bin\Debug\netcoreapp2.1\tic_tac_toe.runtimeconfig.json
+C:\Users\Felipe Sadoyama\repos\tic_tac_toe\bin\Debug\netcoreapp2.1\tic_tac_toe.runtimeconfig.dev.json
+C:\Users\Felipe Sadoyama\repos\tic_tac_toe\bin\Debug\netcoreapp2.1\tic_tac_toe.dll
+C:\Users\Felipe Sadoyama\repos\tic_tac_toe\bin\Debug\netcoreapp2.1\tic_tac_toe.pdb
+C:\Users\Felipe Sadoyama\repos\tic_tac_toe\obj\Debug\netcoreapp2.1\tic_tac_toe.csprojAssemblyReference.cache
+C:\Users\Felipe Sadoyama\repos\tic_tac_toe\obj\Debug\netcoreapp2.1\tic_tac_toe.csproj.CoreCompileInputs.cache
+C:\Users\Felipe Sadoyama\repos\tic_tac_toe\obj\Debug\netcoreapp2.1\tic_tac_toe.AssemblyInfoInputs.cache
+C:\Users\Felipe Sadoyama\repos\tic_tac_toe\obj\Debug\netcoreapp2.1\tic_tac_toe.AssemblyInfo.cs
+C:\Users\Felipe Sadoyama\repos\tic_tac_toe\obj\Debug\netcoreapp2.1\tic_tac_toe.dll
+C:\Users\Felipe Sadoyama\repos\tic_tac_toe\obj\Debug\netcoreapp2.1\tic_tac_toe.pdb
