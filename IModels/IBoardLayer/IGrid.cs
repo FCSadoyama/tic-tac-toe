@@ -18,6 +18,8 @@ namespace tic_tac_toe.IModels.IBoardLayer
          Line[] GetAllLines();
          Spot[] GetAllSpots();
 
+        Spot[] GetAvailableSpots();
+
          bool Contains(MarkEnum mark);
          bool IsFull();
     }

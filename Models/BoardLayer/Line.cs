@@ -25,7 +25,7 @@ namespace tic_tac_toe.Models.BoardLayer
             mark = MarkEnum.Null;
             if ((Spot0.Type == Spot1.Type && Spot1.Type == Spot2.Type) && Spot0.Type != MarkEnum.Null)
             {
-                mark =  Spot0.Type;
+                mark = Spot0.Type;
                 return true;
             }
             return false;

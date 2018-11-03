@@ -84,8 +84,9 @@ namespace tic_tac_toe.Models
 
         public GameStateEnum CheckMatchOver()
         {
-            if (_board.IsGameOver(out MarkEnum mark))
+            if (_board.IsGameOver())
             {
+                MarkEnum mark = this._board.GetWinner();
                 System.Console.Clear();
                 _board.Draw();
                 string winner = _players[0].Mark == mark ? _players[0].Name:_players[1].Name;

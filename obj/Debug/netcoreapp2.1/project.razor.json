@@ -1,14 +1,6 @@
 {
-  "ProjectFilePath": "c:\\Users\\Felipe Sadoyama\\repos\\tic_tac_toe\\tic_tac_toe.csproj",
+  "ProjectFilePath": "c:\\Users\\Felipe\\repos\\tic-tac-toe\\tic_tac_toe.csproj",
   "TargetFramework": "netcoreapp2.1",
   "TagHelpers": [],
-  "Configuration": {
-    "ConfigurationName": "UnsupportedRazor",
-    "LanguageVersion": "1.0",
-    "Extensions": [
-      {
-        "ExtensionName": "UnsupportedRazorExtension"
-      }
-    ]
-  }
+  "Configuration": null
 }

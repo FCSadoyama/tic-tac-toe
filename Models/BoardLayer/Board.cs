@@ -14,6 +14,11 @@ namespace tic_tac_toe.Models.BoardLayer
             Grid = new Grid();
         }
 
+        public Board(Board board)
+        {
+            this.Grid = new Grid(board.Grid);
+        }
+
         public void Draw()
         {
             System.Console.WriteLine("Board:");
@@ -40,24 +45,35 @@ namespace tic_tac_toe.Models.BoardLayer
             return lines[position - 1].IsMarkEmpty();
         }
 
-        public bool IsGameOver(out MarkEnum mark)
+        public bool IsGameOver()
         {
             Line[] lines = this.GetAllGridLines();
-            mark = MarkEnum.Null;
             foreach(var line in lines)
             {
-                if (line.IsVictoryLine(out mark))
+                if (line.IsVictoryLine(out MarkEnum mark))
                 {
                     return true;
                 }
             }
             if (this.IsGridFull())
             {
-                mark = MarkEnum.Null;
                 return true;
             }                
 
             return false;
+        }
+
+        public MarkEnum GetWinner()
+        {
+            Line[] lines = this.GetAllGridLines();
+            foreach(var line in lines)
+            {
+                if (line.IsVictoryLine(out MarkEnum winnerMark))
+                {
+                    return winnerMark;
+                }
+            }
+            return MarkEnum.Null;
         }
 
         public bool IsGridFull()
@@ -67,12 +83,17 @@ namespace tic_tac_toe.Models.BoardLayer
 
         public Line[] GetAllGridLines()
         {
-            return Grid.GetAllLines();
+            return this.Grid.GetAllLines();
         }
 
         public Spot[] GetAllGridSpots()
         {
-            return Grid.GetAllSpots();
+            return this.Grid.GetAllSpots();
+        }
+
+        public Spot[] GetAvailableGridSpots()
+        {
+            return this.Grid.GetAvailableSpots();
         }
     }
 }

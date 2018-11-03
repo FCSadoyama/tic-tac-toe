@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using tic_tac_toe.enumerators;
 using tic_tac_toe.IModels.IBoardLayer;
 
@@ -17,6 +18,18 @@ namespace tic_tac_toe.Models.BoardLayer
             _horizontal1 = new Line(4, 5, 6);
 
             _horizontal2 = new Line(7, 8, 9);
+        }
+
+        public Grid(IGrid grid)
+        {
+            Line newHorizontal0 = grid.GetFirstHorizontalLine();
+            _horizontal0 = new Line(newHorizontal0.Spot0, newHorizontal0.Spot1, newHorizontal0.Spot2);
+
+            Line newHorizontal1 = grid.GetSecondHorizontalLine();
+            _horizontal1 = new Line(newHorizontal1.Spot0, newHorizontal1.Spot1, newHorizontal1.Spot2);
+
+            Line newHorizontal2 = grid.GetThirdHorizontalLine();
+            _horizontal2 = new Line(newHorizontal2.Spot0, newHorizontal2.Spot1, newHorizontal2.Spot2);
         }
 
         public Line GetFirstHorizontalLine()
@@ -100,6 +113,16 @@ namespace tic_tac_toe.Models.BoardLayer
             spots[8] = line.Spot2;
 
             return spots;
+        }
+
+        public Spot[] GetAvailableSpots()
+        {
+            Spot[] availableSpots = this.GetAllSpots()
+                                        .GroupBy(x => x.Type)
+                                        .ToDictionary(g => g.Key, g => g.ToList())[MarkEnum.Null]
+                                        .ToArray();
+
+            return availableSpots;
         }
 
         public bool Contains(MarkEnum mark)
