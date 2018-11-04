@@ -9,7 +9,7 @@ namespace tic_tac_toe.Models.ProfileLayer
 {
     public class Computer : AIPlay
     {
-        private DifficultyEnum _difficulty;
+        public DifficultyEnum _difficulty;
         public Computer(string name, MarkEnum mark, DifficultyEnum difficulty)
         {
             this.Name = name;
@@ -62,12 +62,6 @@ namespace tic_tac_toe.Models.ProfileLayer
         public bool MoveToBlock(Board board)
         {
             return FindWinOrBlockLine(board, this.GetEnemyMark());
-        }
-        
-        public void MakeRandomMove(Board board)
-        {
-            Spot[] availableSpots = board.GetAvailableGridSpots();
-            this.BestMove = availableSpots.ElementAt(new Random().Next(0, availableSpots.Length)).Position;
         }
     }
 }

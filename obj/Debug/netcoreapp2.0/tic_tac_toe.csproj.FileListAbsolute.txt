@@ -8,3 +8,4 @@ C:\Users\Felipe\repos\tic-tac-toe\obj\Debug\netcoreapp2.0\tic_tac_toe.AssemblyIn
 C:\Users\Felipe\repos\tic-tac-toe\obj\Debug\netcoreapp2.0\tic_tac_toe.AssemblyInfo.cs
 C:\Users\Felipe\repos\tic-tac-toe\obj\Debug\netcoreapp2.0\tic_tac_toe.dll
 C:\Users\Felipe\repos\tic-tac-toe\obj\Debug\netcoreapp2.0\tic_tac_toe.pdb
+C:\Users\Felipe\repos\tic-tac-toe\obj\Debug\netcoreapp2.0\tic_tac_toe.csprojResolveAssemblyReference.cache

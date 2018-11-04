@@ -7,8 +7,8 @@ namespace tic_tac_toe.Models.ProfileLayer
 {
     public class AIPlay : Player
     {
-        private readonly int MaxPlay = 10;
-        private readonly int MinPlay = -10;
+        private readonly int MaxPlay = 100;
+        private readonly int MinPlay = -100;
         private readonly int TiePlay = 0;
 
         protected int BestMove;
@@ -45,7 +45,7 @@ namespace tic_tac_toe.Models.ProfileLayer
             {
                 Board newBoard = new Board(board);
                 newBoard.MakeMove(move.Position, player == this.Mark ? this.Mark:this.GetEnemyMark());
-                int result = this.Minimax(newBoard, depth, this.GetEnemyMark());
+                int result = this.Minimax(newBoard, depth, player == this.Mark ? this.GetEnemyMark():this.Mark);
                 scores.Add(result);
                 moves.Add(move.Position);
             }

@@ -58,11 +58,12 @@ namespace tic_tac_toe.Models
         public GameStateEnum Play()
         {
             System.Console.Clear();
-            System.Console.WriteLine("And the starting player is... {0}!", this._players[this._playerPlaying].Name);
+            System.Console.WriteLine("It's {0} turn!", this._players[this._playerPlaying].Name);
             this._board.Draw();
-            Computer comp = this._players[this._playerPlaying] as Computer;
-            if (comp != null)
+            if (this._players[this._playerPlaying] is Computer comp)
             {
+                System.Console.WriteLine("Press any key to make the {0} move.", comp.Name);
+                System.Console.ReadKey();
                 int bestMove = comp.EvalBoard(this._board);
                 this._board.MakeMove(bestMove, comp.Mark);
             }
