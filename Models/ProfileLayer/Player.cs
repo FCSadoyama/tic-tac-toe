@@ -14,5 +14,10 @@ namespace tic_tac_toe.Models.ProfileLayer
                 return MarkEnum.O;
             return MarkEnum.X;
         }
+
+        protected MarkEnum SwitchMark(MarkEnum mark)
+        {
+            return mark == this.Mark ? this.GetEnemyMark():this.Mark;
+        }
     }
 }
