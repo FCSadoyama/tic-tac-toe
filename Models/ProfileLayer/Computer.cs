@@ -2,25 +2,26 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using tic_tac_toe.enumerators;
+using tic_tac_toe.IModels.IBoardLayer;
 using tic_tac_toe.IModels.IProfileLayer;
 using tic_tac_toe.Models.BoardLayer;
 
 namespace tic_tac_toe.Models.ProfileLayer
 {
-    public class Computer : AIPlay
+    public class Computer : AIPlay, IComputer
     {
-        public DifficultyEnum _difficulty;
+        public DifficultyEnum Difficulty { get; set; }
         public Computer(string name, MarkEnum mark, DifficultyEnum difficulty)
         {
             this.Name = name;
             this.Mark = mark;
-            this._difficulty = difficulty;
+            this.Difficulty = difficulty;
             this.BestMove = 5;
         }
 
-        public int EvalBoard(Board board)
+        public int EvalBoard(IBoard board)
         {
-            if (this.MarkBoardCenter(board) && this._difficulty > DifficultyEnum.Easy)
+            if (this.MarkBoardCenter(board) && this.Difficulty > DifficultyEnum.Easy)
                 return board.Center;
             if (this.MoveToWin(board))
                 return this.BestMove;
@@ -29,28 +30,28 @@ namespace tic_tac_toe.Models.ProfileLayer
             return this.GetBestMove(board);
         }
 
-        public int GetBestMove(Board board)
+        public int GetBestMove(IBoard board)
         {
-            if (this._difficulty == DifficultyEnum.Hard)
-                this.GetMiniMaxPlay(board, this._difficulty);
-            else if (this._difficulty == DifficultyEnum.Medium)
+            if (this.Difficulty == DifficultyEnum.Hard)
+                this.GetMiniMaxPlay(board, this.Difficulty);
+            else if (this.Difficulty == DifficultyEnum.Medium)
                 this.MakeRandomMove(board);
             else
                 this.MakeRandomMove(board);
             return this.BestMove;
         }
 
-        public bool MarkBoardCenter(Board board)
+        public bool MarkBoardCenter(IBoard board)
         {
             return board.MakeMove(board.Center, this.Mark);
         }
 
-        public bool MoveToWin(Board board)
+        public bool MoveToWin(IBoard board)
         {
             return FindWinOrBlockLine(board, this.Mark);
         }
 
-        public bool MoveToBlock(Board board)
+        public bool MoveToBlock(IBoard board)
         {
             return FindWinOrBlockLine(board, this.GetEnemyMark());
         }

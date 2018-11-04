@@ -5,17 +5,17 @@ using tic_tac_toe.Views.BoardLayer;
 
 namespace tic_tac_toe.Models.BoardLayer
 {
-    public class Board
+    public class Board : IBoard
     {
         public IGrid Grid { get; protected set; }
-        public readonly int Center = 5;
+        public int Center { get { return 5; } }
 
         public Board()
         {
             Grid = new Grid();
         }
 
-        public Board(Board board)
+        public Board(IBoard board)
         {
             this.Grid = new Grid(board.Grid);
         }
@@ -27,19 +27,19 @@ namespace tic_tac_toe.Models.BoardLayer
 
         public bool MakeMove(int position, MarkEnum newMark)
         {
-            Spot[] lines = Grid.GetAllSpots();
+            ISpot[] lines = Grid.GetAllSpots();
             return this.Grid.GetAllSpots()[position - 1].ChangeMark(newMark);
         }
 
         public bool IsSpotAvailable(int position)
         {
-            Spot[] lines = Grid.GetAllSpots();
+            ISpot[] lines = Grid.GetAllSpots();
             return lines[position - 1].IsMarkEmpty();
         }
 
         public bool IsGameOver()
         {
-            Line[] lines = this.GetAllGridLines();
+            ILine[] lines = this.GetAllGridLines();
             foreach(var line in lines)
             {
                 if (line.IsVictoryLine(out MarkEnum mark))
@@ -57,7 +57,7 @@ namespace tic_tac_toe.Models.BoardLayer
 
         public MarkEnum GetWinner()
         {
-            Line[] lines = this.GetAllGridLines();
+            ILine[] lines = this.GetAllGridLines();
             foreach(var line in lines)
             {
                 if (line.IsVictoryLine(out MarkEnum winnerMark))
@@ -73,17 +73,17 @@ namespace tic_tac_toe.Models.BoardLayer
             return this.Grid.IsFull();
         }
 
-        public Line[] GetAllGridLines()
+        public ILine[] GetAllGridLines()
         {
             return this.Grid.GetAllLines();
         }
 
-        public Spot[] GetAllGridSpots()
+        public ISpot[] GetAllGridSpots()
         {
             return this.Grid.GetAllSpots();
         }
 
-        public Spot[] GetAvailableGridSpots()
+        public ISpot[] GetAvailableGridSpots()
         {
             return this.Grid.GetAvailableSpots();
         }

@@ -4,21 +4,21 @@ namespace tic_tac_toe.IModels.IBoardLayer
 {
     public interface IGrid
     {
-         Line GetFirstHorizontalLine();
-         Line GetSecondHorizontalLine();
-         Line GetThirdHorizontalLine();
+         ILine GetFirstHorizontalLine();
+         ILine GetSecondHorizontalLine();
+         ILine GetThirdHorizontalLine();
 
-         Line GetFirstVerticalLine();
-         Line GetSecondVerticalLine();
-         Line GetThirdVerticalLine();
+         ILine GetFirstVerticalLine();
+         ILine GetSecondVerticalLine();
+         ILine GetThirdVerticalLine();
 
-         Line GetMainDiagonal();
-         Line GetAntiDiagonal();
+         ILine GetMainDiagonal();
+         ILine GetAntiDiagonal();
 
-         Line[] GetAllLines();
-         Spot[] GetAllSpots();
+         ILine[] GetAllLines();
+         ISpot[] GetAllSpots();
 
-        Spot[] GetAvailableSpots();
+         ISpot[] GetAvailableSpots();
 
          bool Contains(MarkEnum mark);
          bool IsFull();

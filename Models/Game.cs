@@ -7,7 +7,7 @@ namespace tic_tac_toe.Models
     public static class Game
     {
         public static GameStateEnum GameState { get; internal set; }
-        private static Match _newMatch;
+        private static IMatch _newMatch;
 
         public static bool Start()
         {

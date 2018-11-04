@@ -1,11 +1,12 @@
 using System;
+using tic_tac_toe.IModels.IBoardLayer;
 
 namespace tic_tac_toe.Models.BoardLayer
 {
-    public class Spot
+    public class Spot : ISpot
     {
-        public MarkEnum Type { get; internal set; }
-        public int Position { get; internal set; }
+        public MarkEnum Type { get; protected set; }
+        public int Position { get; protected set; }
 
         public Spot(int position)
         {
@@ -13,7 +14,7 @@ namespace tic_tac_toe.Models.BoardLayer
             this.Position = position;
         }
 
-        public Spot(Spot newSpot)
+        public Spot(ISpot newSpot)
         {
             this.Type = newSpot.Type;
             this.Position = newSpot.Position;

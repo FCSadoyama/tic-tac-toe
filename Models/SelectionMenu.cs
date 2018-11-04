@@ -1,5 +1,7 @@
 using System;
+using tic_tac_toe.Controllers;
 using tic_tac_toe.enumerators;
+using tic_tac_toe.IModels;
 
 namespace tic_tac_toe.Models
 {
@@ -8,11 +10,11 @@ namespace tic_tac_toe.Models
         private static MatchPlayerEnum _matchPlayers;
         private static DifficultyEnum _computerDifficulty;
 
-        public static Match GetMatchConfig()
+        public static IMatch GetMatchConfig()
         {
-            GetMatchPlayers();
+            SelectionMenu.GetMatchPlayers();
             if (!_matchPlayers.Equals(MatchPlayerEnum.HumanVsHuman))
-                GetDifficulty();
+                SelectionMenu.GetDifficulty();
             else
                 _computerDifficulty = DifficultyEnum.Disabled;
 
@@ -21,50 +23,14 @@ namespace tic_tac_toe.Models
 
         private static void GetMatchPlayers()
         {
-            System.Console.WriteLine("Hello! Welcome to Tic-Tac-Toe.");
-            System.Console.WriteLine("Tell me, who's playing?");
-            System.Console.WriteLine("[1 - Human vs Computer]");
-            System.Console.WriteLine("[2 - Human vs Human]");
-            System.Console.WriteLine("[3 - Computer vs Computer]");
-            Int32.TryParse(System.Console.ReadLine(), out var playersAsInt);
-            System.Console.Clear();
-            while (!IsOptionValid(playersAsInt))
-            {
-                System.Console.WriteLine("Please, give me a valid game option.");
-                System.Console.WriteLine("[1 - Human vs Computer]");
-                System.Console.WriteLine("[2 - Human vs Human]");
-                System.Console.WriteLine("[3 - Computer vs Computer]");
-                Int32.TryParse(System.Console.ReadLine(), out playersAsInt);
-                System.Console.Clear();
-            }
-            _matchPlayers = (MatchPlayerEnum)playersAsInt;
+            _matchPlayers = SelectionMenuController.GetPlayers();
         }
 
         private static void GetDifficulty()
         {
-            System.Console.WriteLine("How hard do you want me to be?");
-            System.Console.WriteLine("[1 - Easy]");
-            System.Console.WriteLine("[2 - Medium]");
-            System.Console.WriteLine("[3 - Hard]");
-            Int32.TryParse(System.Console.ReadLine(), out var difficultyAsInt);
-            System.Console.Clear();
-            while (!IsOptionValid(difficultyAsInt))
-            {
-                System.Console.WriteLine("Please, give me a valid game option.");
-                System.Console.WriteLine("[1 - Easy]");
-                System.Console.WriteLine("[2 - Medium]");
-                System.Console.WriteLine("[3 - Hard]");
-                Int32.TryParse(System.Console.ReadLine(), out difficultyAsInt);
-                System.Console.Clear();
-            }
-            _computerDifficulty = (DifficultyEnum)difficultyAsInt;
+            _computerDifficulty = SelectionMenuController.GetDifficulty();
         }
 
-        private static bool IsOptionValid(int mode)
-        {
-            if (mode >= 1 && mode <= 3)
-                return true;
-            return false;
-        }
+        
     }
 }

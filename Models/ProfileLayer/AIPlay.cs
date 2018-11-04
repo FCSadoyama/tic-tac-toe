@@ -2,19 +2,17 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using tic_tac_toe.enumerators;
+using tic_tac_toe.IModels.IBoardLayer;
+using tic_tac_toe.IModels.IProfileLayer;
 using tic_tac_toe.Models.BoardLayer;
 
 namespace tic_tac_toe.Models.ProfileLayer
 {
-    public class AIPlay : Player
+    public class AIPlay : AI
     {
-        private readonly int MaxPlay = 100;
-        private readonly int MinPlay = -100;
-        private readonly int TiePlay = 0;
+        protected override int BestMove { get; set; }
 
-        protected int BestMove;
-
-        private int GetScore(Board board, int depth = 0)
+        protected override int GetScore(IBoard board, int depth = 0)
         {
             board.IsGameOver();
             MarkEnum mark = board.GetWinner();
@@ -32,7 +30,7 @@ namespace tic_tac_toe.Models.ProfileLayer
             }
         }
 
-        private int Minimax(Board board, MarkEnum player, DifficultyEnum difficulty, int depth = 0)
+        protected override int Minimax(IBoard board, MarkEnum player, DifficultyEnum difficulty, int depth = 0)
         {
             if (board.IsGameOver())
                 return this.GetScore(board, depth);
@@ -41,9 +39,9 @@ namespace tic_tac_toe.Models.ProfileLayer
             IList<int> moves = new List<int>();
 
             var availableSpots = board.GetAvailableGridSpots();
-            foreach (Spot move in availableSpots)
+            foreach (ISpot move in availableSpots)
             {
-                Board newBoard = new Board(board);
+                IBoard newBoard = new Board(board);
                 newBoard.MakeMove(move.Position, player == this.Mark ? this.Mark:this.GetEnemyMark());
                 int result = this.Minimax(newBoard, this.SwitchMark(player), difficulty, depth++);
                 scores.Add(result);
@@ -83,16 +81,16 @@ namespace tic_tac_toe.Models.ProfileLayer
             }
         }
 
-        protected void GetMiniMaxPlay(Board board, DifficultyEnum difficulty)
+        protected override void GetMiniMaxPlay(IBoard board, DifficultyEnum difficulty)
         {
             this.Minimax(board, this.Mark, difficulty);
         }
 
-        protected bool FindWinOrBlockLine(Board board, MarkEnum mark)
+        protected override bool FindWinOrBlockLine(IBoard board, MarkEnum mark)
         {
-            Line[] lines = board.GetAllGridLines();
+            ILine[] lines = board.GetAllGridLines();
 
-            foreach(Line line in lines)
+            foreach(ILine line in lines)
             {
                 if (line.IsPossibleVictoryLine(mark))
                 {
@@ -104,13 +102,13 @@ namespace tic_tac_toe.Models.ProfileLayer
             return false;
         }
         
-        protected void MakeRandomMove(Board board)
+        protected override void MakeRandomMove(IBoard board)
         {
-            Spot[] availableSpots = board.GetAvailableGridSpots();
+            ISpot[] availableSpots = board.GetAvailableGridSpots();
             this.BestMove = availableSpots.ElementAt(new Random().Next(0, availableSpots.Length)).Position;
         }
 
-        private int GetGoodMove(IList<int> scores, IList<int> moves)
+        protected override int GetGoodMove(IList<int> scores, IList<int> moves)
         {
             int MaxOrMin = 3;
             while (scores.Count > 1)

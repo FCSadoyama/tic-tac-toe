@@ -7,9 +7,9 @@ namespace tic_tac_toe.Models.BoardLayer
 {
     public class Grid : IGrid
     {
-        private Line _horizontal0;
-        private Line _horizontal1;
-        private Line _horizontal2;
+        private ILine _horizontal0;
+        private ILine _horizontal1;
+        private ILine _horizontal2;
 
         public Grid()
         {
@@ -22,69 +22,69 @@ namespace tic_tac_toe.Models.BoardLayer
 
         public Grid(IGrid grid)
         {
-            Line newHorizontal0 = grid.GetFirstHorizontalLine();
+            ILine newHorizontal0 = grid.GetFirstHorizontalLine();
             _horizontal0 = new Line(newHorizontal0.Spot0, newHorizontal0.Spot1, newHorizontal0.Spot2);
 
-            Line newHorizontal1 = grid.GetSecondHorizontalLine();
+            ILine newHorizontal1 = grid.GetSecondHorizontalLine();
             _horizontal1 = new Line(newHorizontal1.Spot0, newHorizontal1.Spot1, newHorizontal1.Spot2);
 
-            Line newHorizontal2 = grid.GetThirdHorizontalLine();
+            ILine newHorizontal2 = grid.GetThirdHorizontalLine();
             _horizontal2 = new Line(newHorizontal2.Spot0, newHorizontal2.Spot1, newHorizontal2.Spot2);
         }
 
-        public Line GetFirstHorizontalLine()
+        public ILine GetFirstHorizontalLine()
         {
             return _horizontal0;
         }
 
-        public Line GetSecondHorizontalLine()
+        public ILine GetSecondHorizontalLine()
         {
             return _horizontal1;
         }
 
-        public Line GetThirdHorizontalLine()
+        public ILine GetThirdHorizontalLine()
         {
             return _horizontal2;
         }
 
-        public Line GetFirstVerticalLine()
+        public ILine GetFirstVerticalLine()
         {
-            Line line = new Line(this._horizontal0.Spot0, this._horizontal1.Spot0, this._horizontal2.Spot0);
+            ILine line = new Line(this._horizontal0.Spot0, this._horizontal1.Spot0, this._horizontal2.Spot0);
 
             return line;
         }
 
-        public Line GetSecondVerticalLine()
+        public ILine GetSecondVerticalLine()
         {
-            Line line = new Line(this._horizontal0.Spot1, this._horizontal1.Spot1, this._horizontal2.Spot1);
+            ILine line = new Line(this._horizontal0.Spot1, this._horizontal1.Spot1, this._horizontal2.Spot1);
 
             return line;
         }
 
-        public Line GetThirdVerticalLine()
+        public ILine GetThirdVerticalLine()
         {
-            Line line = new Line(this._horizontal0.Spot2, this._horizontal1.Spot2, this._horizontal2.Spot2);
+            ILine line = new Line(this._horizontal0.Spot2, this._horizontal1.Spot2, this._horizontal2.Spot2);
 
             return line;
         }
 
-        public Line GetMainDiagonal()
+        public ILine GetMainDiagonal()
         {
-            Line line = new Line(this._horizontal0.Spot0, this._horizontal1.Spot1, this._horizontal2.Spot2);
+            ILine line = new Line(this._horizontal0.Spot0, this._horizontal1.Spot1, this._horizontal2.Spot2);
 
             return line;
         }
 
-        public Line GetAntiDiagonal()
+        public ILine GetAntiDiagonal()
         {
-            Line line = new Line(this._horizontal0.Spot2, this._horizontal1.Spot1, this._horizontal2.Spot0);
+            ILine line = new Line(this._horizontal0.Spot2, this._horizontal1.Spot1, this._horizontal2.Spot0);
 
             return line;
         }
 
-        public Line[] GetAllLines()
+        public ILine[] GetAllLines()
         {
-            Line[] lines = new Line[]
+            ILine[] lines = new ILine[]
             {
                 GetFirstHorizontalLine(), GetSecondHorizontalLine(), GetThirdHorizontalLine(),
                 GetFirstVerticalLine(), GetSecondVerticalLine(), GetThirdVerticalLine(),
@@ -94,10 +94,10 @@ namespace tic_tac_toe.Models.BoardLayer
             return lines;
         }
 
-        public Spot[] GetAllSpots()
+        public ISpot[] GetAllSpots()
         {
-            Spot[] spots = new Spot[9];
-            Line line = GetFirstHorizontalLine();
+            ISpot[] spots = new Spot[9];
+            ILine line = GetFirstHorizontalLine();
             spots[0] = line.Spot0;
             spots[1] = line.Spot1;
             spots[2] = line.Spot2;
@@ -115,9 +115,9 @@ namespace tic_tac_toe.Models.BoardLayer
             return spots;
         }
 
-        public Spot[] GetAvailableSpots()
+        public ISpot[] GetAvailableSpots()
         {
-            Spot[] availableSpots = this.GetAllSpots()
+            ISpot[] availableSpots = this.GetAllSpots()
                                         .GroupBy(x => x.Type)
                                         .ToDictionary(g => g.Key, g => g.ToList())[MarkEnum.Null]
                                         .ToArray();

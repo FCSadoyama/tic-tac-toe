@@ -1,12 +1,13 @@
 using System.Collections.Generic;
+using tic_tac_toe.IModels.IBoardLayer;
 
 namespace tic_tac_toe.Models.BoardLayer
 {
-    public class Line
+    public class Line : ILine
     {
-        public Spot Spot0 { get; private set; }
-        public Spot Spot1 { get; private set; }
-        public Spot Spot2 { get; private set; }
+        public ISpot Spot0 { get; private set; }
+        public ISpot Spot1 { get; private set; }
+        public ISpot Spot2 { get; private set; }
 
         public Line(int FirstSpotValue, int SecondSpotValue, int ThirdSpotValue)
         {
@@ -15,7 +16,7 @@ namespace tic_tac_toe.Models.BoardLayer
             Spot2 = new Spot(ThirdSpotValue);
         }
 
-        public Line(Spot FirstSpot, Spot SecondSpot, Spot ThirdSpot)
+        public Line(ISpot FirstSpot, ISpot SecondSpot, ISpot ThirdSpot)
         {
             Spot0 = new Spot(FirstSpot);
             Spot1 = new Spot(SecondSpot);

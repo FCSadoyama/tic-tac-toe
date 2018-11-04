@@ -1,9 +1,10 @@
 using System;
 using tic_tac_toe.Controllers.ProfileLayer;
+using tic_tac_toe.IModels.IProfileLayer;
 
 namespace tic_tac_toe.Models.ProfileLayer
 {
-    public class Human : Player
+    public class Human : Player, IHuman
     {
         public Human(string name, MarkEnum mark)
         {
