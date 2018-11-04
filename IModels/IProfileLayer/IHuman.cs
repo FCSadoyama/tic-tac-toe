@@ -2,6 +2,11 @@ namespace tic_tac_toe.IModels.IProfileLayer
 {
     public interface IHuman
     {
-         int GetSpot(bool isAvailable = true);
+        /// <summary>
+        /// Gets the human player imput for a move
+        /// </summary>
+        /// <param name="isAvailable">bool</param>
+        /// <returns>Returns the desired position</returns>
+        int GetSpot(bool isAvailable = true);
     }
 }
