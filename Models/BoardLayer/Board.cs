@@ -2,6 +2,7 @@ using System;
 using System.Linq;
 using tic_tac_toe.IModels.IBoardLayer;
 using tic_tac_toe.Views.BoardLayer;
+using tic_tac_toe.Enumerators;
 
 namespace tic_tac_toe.Models.BoardLayer
 {

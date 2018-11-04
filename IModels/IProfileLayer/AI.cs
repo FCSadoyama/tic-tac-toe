@@ -1,5 +1,5 @@
 using System.Collections.Generic;
-using tic_tac_toe.enumerators;
+using tic_tac_toe.Enumerators;
 using tic_tac_toe.IModels.IBoardLayer;
 using tic_tac_toe.Models.ProfileLayer;
 

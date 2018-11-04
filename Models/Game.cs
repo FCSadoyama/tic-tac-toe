@@ -1,6 +1,7 @@
 using System;
 using tic_tac_toe.IModels;
 using tic_tac_toe.Models.ProfileLayer;
+using tic_tac_toe.Enumerators;
 
 namespace tic_tac_toe.Models
 {

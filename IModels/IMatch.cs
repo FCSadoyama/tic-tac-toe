@@ -1,3 +1,5 @@
+using tic_tac_toe.Enumerators;
+
 namespace tic_tac_toe.IModels
 {
     public interface IMatch

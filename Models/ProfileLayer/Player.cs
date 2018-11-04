@@ -1,4 +1,5 @@
 using System;
+using tic_tac_toe.Enumerators;
 using tic_tac_toe.IModels.IProfileLayer;
 
 namespace tic_tac_toe.Models.ProfileLayer

@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
-using tic_tac_toe.enumerators;
+using tic_tac_toe.Enumerators;
 using tic_tac_toe.IModels.IBoardLayer;
 
 namespace tic_tac_toe.Models.BoardLayer

@@ -1,6 +1,6 @@
 using System;
 using tic_tac_toe.Controllers;
-using tic_tac_toe.enumerators;
+using tic_tac_toe.Enumerators;
 using tic_tac_toe.IModels;
 
 namespace tic_tac_toe.Models

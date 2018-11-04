@@ -1,4 +1,4 @@
-namespace tic_tac_toe.enumerators
+namespace tic_tac_toe.Enumerators
 {
     public enum DifficultyEnum
     {
