@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
 using tic_tac_toe.enumerators;
+using tic_tac_toe.IModels.IBoardLayer;
+using tic_tac_toe.IModels.IProfileLayer;
 using tic_tac_toe.Models.BoardLayer;
 using tic_tac_toe.Models.ProfileLayer;
 
@@ -12,7 +14,7 @@ namespace tic_tac_toe.Models
         private MatchPlayerEnum _matchPlayers;
         private DifficultyEnum _computerDifficulty;
 
-        private Player[] _players;
+        private IPlayer[] _players;
         private int _playerPlaying;
 
         public Match(MatchPlayerEnum matchPlayers, DifficultyEnum computerDifficulty)

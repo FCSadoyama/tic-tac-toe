@@ -3,7 +3,7 @@ using tic_tac_toe.IModels.IProfileLayer;
 
 namespace tic_tac_toe.Models.ProfileLayer
 {
-    public class Player
+    public class Player : IPlayer
     {
         public string Name {get; protected set;}
         public MarkEnum Mark {get; protected set;}

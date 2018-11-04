@@ -21,20 +21,16 @@ namespace tic_tac_toe.Models.ProfileLayer
         public int EvalBoard(Board board)
         {
             if (this.MarkBoardCenter(board))
-            {
                 return board.Center;
-            }
+            if (this.MoveToWin(board))
+                return this.BestMove;
+            if (this.MoveToBlock(board))
+                return this.BestMove;
             return this.GetBestMove(board);
         }
 
         public int GetBestMove(Board board)
         {
-            int position = board.Center;
-            if (this.MoveToWin(board))
-                return this.BestMove;
-            if (this.MoveToBlock(board))
-                return this.BestMove;
-            
             if (this._difficulty == DifficultyEnum.Hard)
             {
                 this.GetMiniMaxPlay(board);

@@ -1,5 +1,5 @@
 using System;
-using tic_tac_toe.Console.ProfileLayer;
+using tic_tac_toe.Controllers.ProfileLayer;
 
 namespace tic_tac_toe.Models.ProfileLayer
 {
@@ -13,7 +13,7 @@ namespace tic_tac_toe.Models.ProfileLayer
 
         public int GetSpot(bool isAvailable = true)
         {
-            return HumanInteraction.GetSpotFromHuman(isAvailable, this.Mark);
+            return HumanController.GetSpot(isAvailable, this.Mark);
         }
     }
 }

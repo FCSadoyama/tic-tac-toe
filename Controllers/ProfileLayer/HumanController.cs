@@ -1,10 +1,10 @@
 using System;
 
-namespace tic_tac_toe.Console.ProfileLayer
+namespace tic_tac_toe.Controllers.ProfileLayer
 {
-    public static class HumanInteraction
+    public static class HumanController
     {
-        public static int GetSpotFromHuman(bool isAvailable, MarkEnum mark)
+        public static int GetSpot(bool isAvailable, MarkEnum mark)
         {
             if (isAvailable)
             {

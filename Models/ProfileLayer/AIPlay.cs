@@ -85,7 +85,7 @@ namespace tic_tac_toe.Models.ProfileLayer
             return false;
         }
         
-        public void MakeRandomMove(Board board)
+        protected void MakeRandomMove(Board board)
         {
             Spot[] availableSpots = board.GetAvailableGridSpots();
             this.BestMove = availableSpots.ElementAt(new Random().Next(0, availableSpots.Length)).Position;

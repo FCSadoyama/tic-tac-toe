@@ -8,11 +8,9 @@ namespace tic_tac_toe
         static void Main(string[] args)
         {
             System.Console.Clear();
-            bool loopOnGame = Game.Start();
-            while (loopOnGame)
+            while (Game.Start())
             {
                 System.Console.Clear();
-                loopOnGame = Game.Start();
             }
         }
     }
