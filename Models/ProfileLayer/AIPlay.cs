@@ -59,7 +59,7 @@ namespace tic_tac_toe.Models.ProfileLayer
                 else
                 {
                     maxScoreIndex = scores.IndexOf(scores.Max());
-                    this.BestMove = this.GetGoodMove(scores, moves);
+                    this.BestMove = this.GetGoodMove(scores, moves, difficulty);
                 }
                 return scores.Max();
             }
@@ -89,16 +89,18 @@ namespace tic_tac_toe.Models.ProfileLayer
 
             return false;
         }
-        
-        protected override void MakeRandomMove(IBoard board)
-        {
-            ISpot[] availableSpots = board.GetAvailableGridSpots();
-            this.BestMove = availableSpots.ElementAt(new Random().Next(0, availableSpots.Length)).Position;
-        }
 
-        protected override int GetGoodMove(IList<int> scores, IList<int> moves)
+        protected override int GetGoodMove(IList<int> scores, IList<int> moves, DifficultyEnum difficulty)
         {
-            int bestOrWorse = new Random().Next(0, 2);
+            int bestOrWorse = 1;
+            if (difficulty == DifficultyEnum.Medium)
+            {
+                bestOrWorse = new Random().Next(1, 3);
+            }
+            else 
+            {
+                bestOrWorse = new Random().Next(1, 5);
+            }
             int selectedMove = 0;
             if (bestOrWorse == 1)
                 selectedMove = scores.IndexOf(scores.Max());

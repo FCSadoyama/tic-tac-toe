@@ -21,8 +21,6 @@ namespace tic_tac_toe.Models.ProfileLayer
 
         public int EvalBoard(IBoard board)
         {
-            if (this.MarkBoardCenter(board) && this.Difficulty > DifficultyEnum.Easy)
-                return board.Center;
             if (this.MoveToWin(board))
                 return this.BestMove;
             if (this.MoveToBlock(board))
@@ -32,10 +30,7 @@ namespace tic_tac_toe.Models.ProfileLayer
 
         public int GetBestMove(IBoard board)
         {
-            if (this.Difficulty == DifficultyEnum.Easy)
-                this.MakeRandomMove(board);
-            else
-                this.GetMiniMaxPlay(board, this.Difficulty);
+            this.GetMiniMaxPlay(board, this.Difficulty);
             return this.BestMove;
         }
 

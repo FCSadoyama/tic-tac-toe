@@ -42,16 +42,11 @@ namespace tic_tac_toe.IModels.IProfileLayer
         /// <returns>True or false</returns>
         abstract protected bool FindWinOrBlockLine(IBoard board, MarkEnum mark);
         /// <summary>
-        /// Gets a random available position
-        /// </summary>
-        /// <param name="board">IBoard</param>
-        abstract protected void MakeRandomMove(IBoard board);
-        /// <summary>
         /// Gets a good move, but not the best
         /// </summary>
         /// <param name="scores">IList: int</param>
         /// <param name="moves">IList: int</param>
         /// <returns>Retruns a position (int)</returns>
-        abstract protected int GetGoodMove(IList<int> scores, IList<int> moves);
+        abstract protected int GetGoodMove(IList<int> scores, IList<int> moves, DifficultyEnum difficulty);
     }
 }
