@@ -32,12 +32,10 @@ namespace tic_tac_toe.Models.ProfileLayer
 
         public int GetBestMove(IBoard board)
         {
-            if (this.Difficulty == DifficultyEnum.Hard)
-                this.GetMiniMaxPlay(board, this.Difficulty);
-            else if (this.Difficulty == DifficultyEnum.Medium)
+            if (this.Difficulty == DifficultyEnum.Easy)
                 this.MakeRandomMove(board);
             else
-                this.MakeRandomMove(board);
+                this.GetMiniMaxPlay(board, this.Difficulty);
             return this.BestMove;
         }
 

@@ -65,18 +65,6 @@ namespace tic_tac_toe.Models.ProfileLayer
             }
             else
             {
-                int minScoreIndex = 0;
-                if (difficulty == DifficultyEnum.Hard)
-                {
-                    minScoreIndex = scores.IndexOf(scores.Min());
-                    this.BestMove = moves[minScoreIndex];
-                }
-                else
-                {
-                    minScoreIndex = scores.IndexOf(scores.Min());
-                    this.BestMove = this.GetGoodMove(scores, moves);
-                }
-                
                 return scores.Min();
             }
         }
@@ -110,20 +98,13 @@ namespace tic_tac_toe.Models.ProfileLayer
 
         protected override int GetGoodMove(IList<int> scores, IList<int> moves)
         {
-            int MaxOrMin = 3;
-            while (scores.Count > 1)
-            {
-                int x;
-                if (MaxOrMin > 0)
-                    x = scores.IndexOf(scores.Max());
-                else
-                    x = scores.IndexOf(scores.Min());
-                
-                scores.Remove(x);
-                moves.Remove(x);
-                MaxOrMin = MaxOrMin == 3 ? 0:MaxOrMin++;
-            }
-            return moves[0];
+            int bestOrWorse = new Random().Next(0, 2);
+            int selectedMove = 0;
+            if (bestOrWorse == 1)
+                selectedMove = scores.IndexOf(scores.Max());
+            else
+                selectedMove = scores.IndexOf(scores.Min());
+            return moves[selectedMove];
         }
     }
 }
